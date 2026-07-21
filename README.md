@@ -24,7 +24,7 @@ Más que una agenda digital, StudyTrack busca fomentar la organización, la resp
 
 ---
 
-#  Nuestra misión
+# Nuestra misión
 
 Ayudar a los estudiantes a mejorar su organización académica mediante una plataforma moderna, intuitiva y confiable que facilite el seguimiento de sus actividades escolares y contribuya a mejorar su rendimiento académico.
 
