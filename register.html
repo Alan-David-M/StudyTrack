@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- ========================= -->
+    <!--      CONFIGURACIÓN        -->
+    <!-- ========================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Crea tu cuenta de StudyTrack para organizar materias, tareas, fechas y progreso académico."
+    >
+    <title>StudyTrack | Crear cuenta</title>
+
+    <!-- ========================= -->
+    <!--      TIPOGRAFÍA           -->
+    <!-- ========================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ========================= -->
+    <!--      ICONOS               -->
+    <!-- ========================= -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- ========================= -->
+    <!--      ESTILOS CSS          -->
+    <!-- ========================= -->
+    <!-- Conserva el diseño original compartido con index.html -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Agrega únicamente los ajustes de la página de registro -->
+    <link rel="stylesheet" href="css/register.css">
+</head>
+
+<!--
+    Cuando exista el Dashboard, agrega su ruta aquí, por ejemplo:
+    data-dashboard-url="dashboard/index.html"
+-->
+<body data-dashboard-url="">
+
+    <!-- ========================= -->
+    <!--      CONTENEDOR GENERAL   -->
+    <!-- ========================= -->
+    <main class="login-page register-page">
+
+        <!-- ========================= -->
+        <!--      PANEL IZQUIERDO      -->
+        <!-- ========================= -->
+        <section class="brand-panel" aria-label="Información de StudyTrack">
+
+            <!-- Formas decorativas -->
+            <div class="shape shape-top" aria-hidden="true"></div>
+            <div class="shape shape-middle" aria-hidden="true"></div>
+            <div class="shape shape-bottom" aria-hidden="true"></div>
+
+            <!-- Puntos decorativos -->
+            <div class="dots-grid" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+
+            <!-- Burbujas decorativas -->
+            <div class="floating-ball floating-ball-1" aria-hidden="true"></div>
+            <div class="floating-ball floating-ball-2" aria-hidden="true"></div>
+
+            <!-- Identidad de marca -->
+            <div class="brand-header">
+                <div class="brand-logo">
+                    <img
+                        src="assets/images/logo-studytrack.png"
+                        alt="Logotipo de StudyTrack"
+                        width="96"
+                        height="96"
+                    >
+                </div>
+
+                <h1 class="brand-title">StudyTrack</h1>
+                <p class="brand-subtitle">Organiza hoy. Aprende mejor mañana.</p>
+            </div>
+
+            <!-- Ilustración visual creada con HTML -->
+            <div class="study-illustration" aria-hidden="true">
+
+                <!-- Vaso con lápices -->
+                <div class="cup">
+                    <span class="pencil pencil-blue"></span>
+                    <span class="pencil pencil-yellow"></span>
+                    <span class="pencil pencil-dark"></span>
+                </div>
+
+                <!-- Bloque principal -->
+                <div class="illustration-stack">
+
+                    <!-- Birrete -->
+                    <div class="graduation-cap">
+                        <div class="cap-top"></div>
+                        <div class="cap-base"></div>
+                        <div class="cap-tassel"></div>
+                    </div>
+
+                    <!-- Calendario -->
+                    <div class="calendar-card">
+                        <div class="calendar-rings">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+
+                        <div class="calendar-grid">
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span class="highlight-date"></span>
+                        </div>
+                    </div>
+
+                    <!-- Libros -->
+                    <div class="books-stack">
+                        <div class="book book-top"></div>
+                        <div class="book book-middle"></div>
+                        <div class="book book-bottom"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensaje destacado -->
+            <div class="brand-badge">
+                <i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
+                <span>Tus tareas, tu éxito, tu futuro.</span>
+            </div>
+
+            <!-- Beneficios -->
+            <div class="brand-features">
+                <article class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Organiza</h3>
+                        <p>tus materias</p>
+                    </div>
+                </article>
+
+                <article class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Planifica</h3>
+                        <p>tus tareas</p>
+                    </div>
+                </article>
+
+                <article class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Recibe</h3>
+                        <p>recordatorios</p>
+                    </div>
+                </article>
+
+                <article class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Alcanza</h3>
+                        <p>tus metas</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ========================= -->
+        <!--      PANEL DERECHO        -->
+        <!-- ========================= -->
+        <section class="login-panel register-panel" aria-label="Crear una cuenta de StudyTrack">
+            <div class="login-card register-card">
+
+                <!-- Encabezado -->
+                <header class="login-header register-header">
+                    <a class="back-link" href="index.html" aria-label="Regresar al inicio de sesión">
+                        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                        <span>Volver</span>
+                    </a>
+
+                    <h2 id="authTitle">Crea tu cuenta</h2>
+                    <p id="authSubtitle">Comienza a organizar tu vida académica</p>
+                    <div class="title-line" aria-hidden="true"></div>
+                </header>
+
+                <!-- Mensajes de autenticación -->
+                <div
+                    id="authMessage"
+                    class="auth-message"
+                    role="alert"
+                    aria-live="polite"
+                    hidden
+                ></div>
+
+                <!-- ========================= -->
+                <!--      FORMULARIO           -->
+                <!-- ========================= -->
+                <form id="registerForm" class="login-form register-form" novalidate>
+                    <div class="register-form-grid">
+
+                        <!-- Nombre completo -->
+                        <div class="form-group field-full">
+                            <label for="registerName">Nombre completo</label>
+
+                            <div class="input-wrapper">
+                                <span class="input-icon" aria-hidden="true">
+                                    <i class="fa-regular fa-user"></i>
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="registerName"
+                                    name="name"
+                                    placeholder="Escribe tu nombre completo"
+                                    autocomplete="name"
+                                    maxlength="80"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Nombre de usuario -->
+                        <div class="form-group">
+                            <label for="registerUsername">Nombre de usuario</label>
+
+                            <div class="input-wrapper">
+                                <span class="input-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-at"></i>
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="registerUsername"
+                                    name="username"
+                                    placeholder="Ejemplo: alan_estudiante"
+                                    autocomplete="username"
+                                    minlength="3"
+                                    maxlength="24"
+                                    pattern="[A-Za-z0-9._-]+"
+                                    aria-describedby="usernameHelp"
+                                    required
+                                >
+                            </div>
+
+                            <small id="usernameHelp" class="field-help">
+                                De 3 a 24 caracteres: letras, números, punto, guion o guion bajo.
+                            </small>
+                        </div>
+
+                        <!-- Correo electrónico -->
+                        <div class="form-group">
+                            <label for="registerEmail">Correo electrónico</label>
+
+                            <div class="input-wrapper">
+                                <span class="input-icon" aria-hidden="true">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </span>
+
+                                <input
+                                    type="email"
+                                    id="registerEmail"
+                                    name="email"
+                                    placeholder="nombre@correo.com"
+                                    autocomplete="email"
+                                    inputmode="email"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Contraseña -->
+                        <div class="form-group">
+                            <label for="registerPassword">Contraseña</label>
+
+                            <div class="input-wrapper">
+                                <span class="input-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+
+                                <input
+                                    type="password"
+                                    id="registerPassword"
+                                    name="password"
+                                    placeholder="Mínimo 6 caracteres"
+                                    autocomplete="new-password"
+                                    minlength="6"
+                                    aria-describedby="passwordHelp passwordStrengthText"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="toggle-password"
+                                    id="toggleRegisterPassword"
+                                    aria-label="Mostrar contraseña"
+                                    aria-controls="registerPassword"
+                                    aria-pressed="false"
+                                >
+                                    <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                                </button>
+                            </div>
+
+                            <div class="password-strength" aria-hidden="true">
+                                <span id="passwordStrengthBar"></span>
+                            </div>
+                            <small id="passwordStrengthText" class="field-help">
+                                Usa una combinación difícil de adivinar.
+                            </small>
+                            <span id="passwordHelp" class="sr-only">La contraseña debe tener al menos 6 caracteres.</span>
+                        </div>
+
+                        <!-- Confirmar contraseña -->
+                        <div class="form-group">
+                            <label for="registerConfirmPassword">Confirmar contraseña</label>
+
+                            <div class="input-wrapper">
+                                <span class="input-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </span>
+
+                                <input
+                                    type="password"
+                                    id="registerConfirmPassword"
+                                    name="confirmPassword"
+                                    placeholder="Repite tu contraseña"
+                                    autocomplete="new-password"
+                                    minlength="6"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="toggle-password"
+                                    id="toggleConfirmPassword"
+                                    aria-label="Mostrar contraseña"
+                                    aria-controls="registerConfirmPassword"
+                                    aria-pressed="false"
+                                >
+                                    <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Términos -->
+                    <label class="terms-row" for="acceptTerms">
+                        <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+                        <span class="terms-check" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span>
+                            Acepto los
+                            <a href="#" id="termsLink">términos de uso</a>
+                            y el aviso de privacidad de StudyTrack.
+                        </span>
+                    </label>
+
+                    <!-- Botón principal -->
+                    <button id="registerButton" type="submit" class="login-button register-button">
+                        <span>Crear cuenta</span>
+                        <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                    </button>
+
+                    <!-- Inicio de sesión -->
+                    <p class="signup-text register-login-text">
+                        ¿Ya tienes una cuenta?
+                        <a href="index.html" id="loginLink">Iniciar sesión</a>
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================= -->
+    <!--      JAVASCRIPT           -->
+    <!-- ========================= -->
+    <script type="module" src="js/register.js"></script>
+</body>
+</html>
