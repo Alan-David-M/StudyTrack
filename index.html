@@ -6,6 +6,7 @@
     <!-- ========================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StudyTrack: organiza tus materias, tareas, fechas y progreso académico.">
     <title>StudyTrack | Iniciar sesión</title>
 
     <!-- ========================= -->
@@ -25,7 +26,12 @@
     <!-- ========================= -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+
+<!--
+    Cuando exista el Dashboard, agrega su ruta aquí, por ejemplo:
+    data-dashboard-url="dashboard/index.html"
+-->
+<body data-dashboard-url="">
 
     <!-- ========================= -->
     <!--      CONTENEDOR GENERAL   -->
@@ -35,15 +41,15 @@
         <!-- ========================= -->
         <!--      PANEL IZQUIERDO      -->
         <!-- ========================= -->
-        <section class="brand-panel">
+        <section class="brand-panel" aria-label="Información de StudyTrack">
 
             <!-- Formas decorativas -->
-            <div class="shape shape-top"></div>
-            <div class="shape shape-middle"></div>
-            <div class="shape shape-bottom"></div>
+            <div class="shape shape-top" aria-hidden="true"></div>
+            <div class="shape shape-middle" aria-hidden="true"></div>
+            <div class="shape shape-bottom" aria-hidden="true"></div>
 
             <!-- Puntos decorativos -->
-            <div class="dots-grid">
+            <div class="dots-grid" aria-hidden="true">
                 <span></span><span></span><span></span>
                 <span></span><span></span><span></span>
                 <span></span><span></span><span></span>
@@ -51,14 +57,18 @@
             </div>
 
             <!-- Burbujas decorativas -->
-            <div class="floating-ball floating-ball-1"></div>
-            <div class="floating-ball floating-ball-2"></div>
+            <div class="floating-ball floating-ball-1" aria-hidden="true"></div>
+            <div class="floating-ball floating-ball-2" aria-hidden="true"></div>
 
             <!-- Identidad de marca -->
             <div class="brand-header">
                 <div class="brand-logo">
-                    <!-- Si tu logo tiene otro nombre, cambia esta ruta -->
-                    <img src="assets/images/logo-studytrack.png" alt="Logotipo de StudyTrack">
+                    <img
+                        src="assets/images/logo-studytrack.png"
+                        alt="Logotipo de StudyTrack"
+                        width="96"
+                        height="96"
+                    >
                 </div>
 
                 <h1 class="brand-title">StudyTrack</h1>
@@ -66,7 +76,7 @@
             </div>
 
             <!-- Ilustración visual creada con HTML -->
-            <div class="study-illustration">
+            <div class="study-illustration" aria-hidden="true">
 
                 <!-- Vaso con lápices -->
                 <div class="cup">
@@ -110,7 +120,7 @@
 
             <!-- Mensaje destacado -->
             <div class="brand-badge">
-                <i class="fa-solid fa-shield-heart"></i>
+                <i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
                 <span>Tus tareas, tu éxito, tu futuro.</span>
             </div>
 
@@ -118,7 +128,7 @@
             <div class="brand-features">
                 <article class="feature-item">
                     <div class="feature-icon">
-                        <i class="fa-solid fa-circle-check"></i>
+                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
                     </div>
                     <div class="feature-text">
                         <h3>Organiza</h3>
@@ -128,7 +138,7 @@
 
                 <article class="feature-item">
                     <div class="feature-icon">
-                        <i class="fa-solid fa-calendar-days"></i>
+                        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
                     </div>
                     <div class="feature-text">
                         <h3>Planifica</h3>
@@ -138,7 +148,7 @@
 
                 <article class="feature-item">
                     <div class="feature-icon">
-                        <i class="fa-regular fa-bell"></i>
+                        <i class="fa-regular fa-bell" aria-hidden="true"></i>
                     </div>
                     <div class="feature-text">
                         <h3>Recibe</h3>
@@ -148,7 +158,7 @@
 
                 <article class="feature-item">
                     <div class="feature-icon">
-                        <i class="fa-solid fa-chart-column"></i>
+                        <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
                     </div>
                     <div class="feature-text">
                         <h3>Alcanza</h3>
@@ -161,33 +171,45 @@
         <!-- ========================= -->
         <!--      PANEL DERECHO        -->
         <!-- ========================= -->
-        <section class="login-panel">
+        <section class="login-panel" aria-label="Acceso a StudyTrack">
             <div class="login-card">
 
-                <!-- Encabezado -->
+                <!-- Encabezado dinámico -->
                 <header class="login-header">
-                    <h2>¡Bienvenido de nuevo!</h2>
-                    <p>Inicia sesión para continuar</p>
-                    <div class="title-line"></div>
+                    <h2 id="authTitle">¡Bienvenido de nuevo!</h2>
+                    <p id="authSubtitle">Inicia sesión para continuar</p>
+                    <div class="title-line" aria-hidden="true"></div>
                 </header>
 
-                <!-- Formulario -->
-                <form class="login-form" action="#" method="post">
+                <!-- Mensajes de autenticación -->
+                <div
+                    id="authMessage"
+                    role="alert"
+                    aria-live="polite"
+                    hidden
+                ></div>
 
-                    <!-- Campo usuario -->
+                <!-- ========================= -->
+                <!--      INICIO DE SESIÓN     -->
+                <!-- ========================= -->
+                <form id="loginForm" class="login-form" novalidate>
+
+                    <!-- Campo correo -->
                     <div class="form-group">
-                        <label for="username">Usuario o correo electrónico</label>
+                        <label for="email">Correo electrónico</label>
 
                         <div class="input-wrapper">
-                            <span class="input-icon">
-                                <i class="fa-regular fa-user"></i>
+                            <span class="input-icon" aria-hidden="true">
+                                <i class="fa-regular fa-envelope"></i>
                             </span>
 
                             <input
-                                type="text"
-                                id="username"
-                                name="username"
-                                placeholder="Ingresa tu usuario o correo"
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="nombre@correo.com"
+                                autocomplete="email"
+                                inputmode="email"
                                 required
                             >
                         </div>
@@ -198,7 +220,7 @@
                         <label for="password">Contraseña</label>
 
                         <div class="input-wrapper">
-                            <span class="input-icon">
+                            <span class="input-icon" aria-hidden="true">
                                 <i class="fa-solid fa-lock"></i>
                             </span>
 
@@ -207,34 +229,45 @@
                                 id="password"
                                 name="password"
                                 placeholder="Ingresa tu contraseña"
+                                autocomplete="current-password"
+                                minlength="6"
                                 required
                             >
 
-                            <button type="button" class="toggle-password" id="togglePassword" aria-label="Mostrar u ocultar contraseña">
-                                <i class="fa-regular fa-eye"></i>
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                id="togglePassword"
+                                aria-label="Mostrar contraseña"
+                                aria-controls="password"
+                                aria-pressed="false"
+                            >
+                                <i class="fa-regular fa-eye" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
 
                     <!-- Opciones -->
                     <div class="form-options">
-                        <label class="remember-me">
-                            <input type="checkbox" name="remember">
-                            <span class="custom-check"></span>
+                        <label class="remember-me" for="remember">
+                            <input type="checkbox" id="remember" name="remember">
+                            <span class="custom-check" aria-hidden="true"></span>
                             <span>Recordarme</span>
                         </label>
 
-                        <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                        <a href="#" id="forgotPassword" class="forgot-link">
+                            ¿Olvidaste tu contraseña?
+                        </a>
                     </div>
 
                     <!-- Botón principal -->
-                    <button type="submit" class="login-button">
+                    <button id="loginButton" type="submit" class="login-button">
                         <span>Iniciar sesión</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                     </button>
 
                     <!-- Separador -->
-                    <div class="social-divider">
+                    <div class="social-divider" aria-hidden="true">
                         <span></span>
                         <p>o continúa con</p>
                         <span></span>
@@ -242,23 +275,185 @@
 
                     <!-- Botones sociales -->
                     <div class="social-login">
-                        <button type="button" class="social-button" aria-label="Continuar con Google">
-                            <i class="fa-brands fa-google"></i>
+                        <button
+                            type="button"
+                            class="social-button"
+                            data-provider="google"
+                            aria-label="Continuar con Google"
+                        >
+                            <i class="fa-brands fa-google" aria-hidden="true"></i>
                         </button>
 
-                        <button type="button" class="social-button" aria-label="Continuar con Microsoft">
-                            <i class="fa-brands fa-microsoft"></i>
+                        <button
+                            type="button"
+                            class="social-button"
+                            data-provider="microsoft"
+                            aria-label="Continuar con Microsoft"
+                        >
+                            <i class="fa-brands fa-microsoft" aria-hidden="true"></i>
                         </button>
 
-                        <button type="button" class="social-button" aria-label="Continuar con Apple">
-                            <i class="fa-brands fa-apple"></i>
+                        <button
+                            type="button"
+                            class="social-button"
+                            data-provider="apple"
+                            aria-label="Continuar con Apple"
+                        >
+                            <i class="fa-brands fa-apple" aria-hidden="true"></i>
                         </button>
                     </div>
 
                     <!-- Registro -->
                     <p class="signup-text">
                         ¿No tienes una cuenta?
-                        <a href="#">Crear cuenta</a>
+                        <a href="#" id="registerLink">Crear cuenta</a>
+                    </p>
+                </form>
+
+                <!-- ========================= -->
+                <!--      CREAR CUENTA         -->
+                <!-- ========================= -->
+                <form id="registerForm" class="login-form" novalidate hidden>
+
+                    <!-- Nombre -->
+                    <div class="form-group">
+                        <label for="registerName">Nombre completo</label>
+
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true">
+                                <i class="fa-regular fa-user"></i>
+                            </span>
+
+                            <input
+                                type="text"
+                                id="registerName"
+                                name="name"
+                                placeholder="Escribe tu nombre"
+                                autocomplete="name"
+                                maxlength="80"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Usuario -->
+                    <div class="form-group">
+                        <label for="registerUsername">Nombre de usuario</label>
+
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true">
+                                <i class="fa-solid fa-at"></i>
+                            </span>
+
+                            <input
+                                type="text"
+                                id="registerUsername"
+                                name="username"
+                                placeholder="Ejemplo: alan_estudiante"
+                                autocomplete="username"
+                                minlength="3"
+                                maxlength="24"
+                                pattern="[A-Za-z0-9._-]+"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Correo -->
+                    <div class="form-group">
+                        <label for="registerEmail">Correo electrónico</label>
+
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true">
+                                <i class="fa-regular fa-envelope"></i>
+                            </span>
+
+                            <input
+                                type="email"
+                                id="registerEmail"
+                                name="email"
+                                placeholder="nombre@correo.com"
+                                autocomplete="email"
+                                inputmode="email"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="form-group">
+                        <label for="registerPassword">Contraseña</label>
+
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                name="password"
+                                placeholder="Mínimo 6 caracteres"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                id="toggleRegisterPassword"
+                                aria-label="Mostrar contraseña"
+                                aria-controls="registerPassword"
+                                aria-pressed="false"
+                            >
+                                <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Confirmación -->
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">Confirmar contraseña</label>
+
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </span>
+
+                            <input
+                                type="password"
+                                id="registerConfirmPassword"
+                                name="confirmPassword"
+                                placeholder="Repite tu contraseña"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                id="toggleConfirmPassword"
+                                aria-label="Mostrar contraseña"
+                                aria-controls="registerConfirmPassword"
+                                aria-pressed="false"
+                            >
+                                <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Botón de registro -->
+                    <button id="registerButton" type="submit" class="login-button">
+                        <span>Crear cuenta</span>
+                        <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                    </button>
+
+                    <!-- Regresar -->
+                    <p class="signup-text">
+                        ¿Ya tienes una cuenta?
+                        <a href="#" id="backToLogin">Iniciar sesión</a>
                     </p>
                 </form>
             </div>
