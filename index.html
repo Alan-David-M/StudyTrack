@@ -174,7 +174,7 @@
         <section class="login-panel" aria-label="Acceso a StudyTrack">
             <div class="login-card">
 
-                <!-- Encabezado dinámico -->
+                <!-- Encabezado -->
                 <header class="login-header">
                     <h2 id="authTitle">¡Bienvenido de nuevo!</h2>
                     <p id="authSubtitle">Inicia sesión para continuar</p>
@@ -303,157 +303,10 @@
                         </button>
                     </div>
 
-                    <!-- Registro -->
-                   <p class="signup-text">
-    ¿No tienes una cuenta?
-    <a href="register.html" id="registerLink">Crear cuenta</a>
-</p>
-                </form>
-
-                <!-- ========================= -->
-                <!--      CREAR CUENTA         -->
-                <!-- ========================= -->
-                <form id="registerForm" class="login-form" novalidate hidden>
-
-                    <!-- Nombre -->
-                    <div class="form-group">
-                        <label for="registerName">Nombre completo</label>
-
-                        <div class="input-wrapper">
-                            <span class="input-icon" aria-hidden="true">
-                                <i class="fa-regular fa-user"></i>
-                            </span>
-
-                            <input
-                                type="text"
-                                id="registerName"
-                                name="name"
-                                placeholder="Escribe tu nombre"
-                                autocomplete="name"
-                                maxlength="80"
-                                required
-                            >
-                        </div>
-                    </div>
-
-                    <!-- Usuario -->
-                    <div class="form-group">
-                        <label for="registerUsername">Nombre de usuario</label>
-
-                        <div class="input-wrapper">
-                            <span class="input-icon" aria-hidden="true">
-                                <i class="fa-solid fa-at"></i>
-                            </span>
-
-                            <input
-                                type="text"
-                                id="registerUsername"
-                                name="username"
-                                placeholder="Ejemplo: alan_estudiante"
-                                autocomplete="username"
-                                minlength="3"
-                                maxlength="24"
-                                pattern="[A-Za-z0-9._-]+"
-                                required
-                            >
-                        </div>
-                    </div>
-
-                    <!-- Correo -->
-                    <div class="form-group">
-                        <label for="registerEmail">Correo electrónico</label>
-
-                        <div class="input-wrapper">
-                            <span class="input-icon" aria-hidden="true">
-                                <i class="fa-regular fa-envelope"></i>
-                            </span>
-
-                            <input
-                                type="email"
-                                id="registerEmail"
-                                name="email"
-                                placeholder="nombre@correo.com"
-                                autocomplete="email"
-                                inputmode="email"
-                                required
-                            >
-                        </div>
-                    </div>
-
-                    <!-- Contraseña -->
-                    <div class="form-group">
-                        <label for="registerPassword">Contraseña</label>
-
-                        <div class="input-wrapper">
-                            <span class="input-icon" aria-hidden="true">
-                                <i class="fa-solid fa-lock"></i>
-                            </span>
-
-                            <input
-                                type="password"
-                                id="registerPassword"
-                                name="password"
-                                placeholder="Mínimo 6 caracteres"
-                                autocomplete="new-password"
-                                minlength="6"
-                                required
-                            >
-
-                            <button
-                                type="button"
-                                class="toggle-password"
-                                id="toggleRegisterPassword"
-                                aria-label="Mostrar contraseña"
-                                aria-controls="registerPassword"
-                                aria-pressed="false"
-                            >
-                                <i class="fa-regular fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Confirmación -->
-                    <div class="form-group">
-                        <label for="registerConfirmPassword">Confirmar contraseña</label>
-
-                        <div class="input-wrapper">
-                            <span class="input-icon" aria-hidden="true">
-                                <i class="fa-solid fa-shield-halved"></i>
-                            </span>
-
-                            <input
-                                type="password"
-                                id="registerConfirmPassword"
-                                name="confirmPassword"
-                                placeholder="Repite tu contraseña"
-                                autocomplete="new-password"
-                                minlength="6"
-                                required
-                            >
-
-                            <button
-                                type="button"
-                                class="toggle-password"
-                                id="toggleConfirmPassword"
-                                aria-label="Mostrar contraseña"
-                                aria-controls="registerConfirmPassword"
-                                aria-pressed="false"
-                            >
-                                <i class="fa-regular fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Botón de registro -->
-                    <button id="registerButton" type="submit" class="login-button">
-                        <span>Crear cuenta</span>
-                        <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
-                    </button>
-
-                    <!-- Regresar -->
+                    <!-- Enlace a registro -->
                     <p class="signup-text">
-                        ¿Ya tienes una cuenta?
-                        <a href="#" id="backToLogin">Iniciar sesión</a>
+                        ¿No tienes una cuenta?
+                        <a href="register.html" id="registerLink">Crear cuenta</a>
                     </p>
                 </form>
             </div>
