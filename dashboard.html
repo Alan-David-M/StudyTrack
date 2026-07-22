@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Panel principal de StudyTrack para organizar materias, tareas, entregas y progreso académico.">
+    <meta name="theme-color" content="#f5f9ff">
+    <title>StudyTrack | Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body data-login-url="index.html">
+    <div class="app-shell" id="appShell">
+
+        <!-- Fondo decorativo -->
+        <div class="background-decoration decoration-one" aria-hidden="true"></div>
+        <div class="background-decoration decoration-two" aria-hidden="true"></div>
+        <div class="dot-pattern" aria-hidden="true"></div>
+
+        <!-- Barra lateral para computadora -->
+        <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
+            <a class="brand" href="dashboard.html" aria-label="Ir al Dashboard">
+                <span class="brand-mark">
+                    <img
+                        src="assets/images/logo-studytrack.png"
+                        alt=""
+                        width="52"
+                        height="52"
+                    >
+                </span>
+                <span class="brand-name">Study<span>Track</span></span>
+            </a>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link active" href="dashboard.html" aria-current="page">
+                    <span class="nav-icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+
+                <a class="nav-link" href="#" data-coming-soon="Materias">
+                    <span class="nav-icon"><i class="fa-solid fa-book-open"></i></span>
+                    <span class="nav-label">Materias</span>
+                </a>
+
+                <a class="nav-link" href="#" data-coming-soon="Tareas">
+                    <span class="nav-icon"><i class="fa-regular fa-clipboard"></i></span>
+                    <span class="nav-label">Tareas</span>
+                </a>
+
+                <a class="nav-link" href="#" data-coming-soon="Calendario">
+                    <span class="nav-icon"><i class="fa-regular fa-calendar-days"></i></span>
+                    <span class="nav-label">Calendario</span>
+                </a>
+
+                <a class="nav-link" href="#" data-coming-soon="Progreso">
+                    <span class="nav-icon"><i class="fa-solid fa-chart-column"></i></span>
+                    <span class="nav-label">Progreso</span>
+                </a>
+
+                <a class="nav-link" href="#" data-coming-soon="Ajustes">
+                    <span class="nav-icon"><i class="fa-solid fa-gear"></i></span>
+                    <span class="nav-label">Ajustes</span>
+                </a>
+            </nav>
+
+            <article class="streak-mini-card">
+                <span class="mini-star"><i class="fa-solid fa-star"></i></span>
+                <div class="mini-illustration" aria-hidden="true">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <h2>¡Sigue así!</h2>
+                <p id="sidebarStreakText">Comienza tu primera racha de estudio.</p>
+                <button class="text-button" type="button" data-coming-soon="Progreso">
+                    Ver mi progreso
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </article>
+
+            <button
+                class="sidebar-collapse"
+                id="sidebarCollapse"
+                type="button"
+                aria-label="Contraer menú lateral"
+                aria-expanded="true"
+            >
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+        </aside>
+
+        <!-- Contenido principal -->
+        <div class="main-area">
+            <header class="topbar">
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    type="button"
+                    aria-label="Abrir menú"
+                    aria-controls="mobileDrawer"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <a class="mobile-brand" href="dashboard.html" aria-label="StudyTrack">
+                    <img
+                        src="assets/images/logo-studytrack.png"
+                        alt=""
+                        width="42"
+                        height="42"
+                    >
+                    <span>Study<span>Track</span></span>
+                </a>
+
+                <div class="search-box" role="search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <label class="sr-only" for="globalSearch">Buscar</label>
+                    <input
+                        id="globalSearch"
+                        type="search"
+                        placeholder="Buscar materias, tareas o temas..."
+                        autocomplete="off"
+                    >
+                    <kbd>Ctrl + K</kbd>
+                </div>
+
+                <div class="topbar-actions">
+                    <div class="popover-wrapper">
+                        <button
+                            class="icon-button notification-button"
+                            id="notificationButton"
+                            type="button"
+                            aria-label="Abrir notificaciones"
+                            aria-expanded="false"
+                            aria-controls="notificationPopover"
+                        >
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="notification-badge" id="notificationBadge" hidden>0</span>
+                        </button>
+
+                        <section
+                            class="popover notification-popover"
+                            id="notificationPopover"
+                            aria-label="Notificaciones"
+                            hidden
+                        >
+                            <div class="popover-header">
+                                <div>
+                                    <strong>Notificaciones</strong>
+                                    <span>Tu actividad reciente</span>
+                                </div>
+                                <button class="small-icon-button" type="button" data-close-popover>
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                            <div class="popover-empty">
+                                <span><i class="fa-regular fa-bell-slash"></i></span>
+                                <strong>Todo está tranquilo</strong>
+                                <p>Aquí aparecerán tus próximos recordatorios.</p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="topbar-divider" aria-hidden="true"></div>
+
+                    <div class="popover-wrapper profile-wrapper">
+                        <button
+                            class="profile-button"
+                            id="profileButton"
+                            type="button"
+                            aria-label="Abrir menú de usuario"
+                            aria-expanded="false"
+                            aria-controls="profilePopover"
+                        >
+                            <span class="avatar" id="topAvatar">ST</span>
+                            <span class="profile-copy">
+                                <strong id="topUserName">Cargando...</strong>
+                                <small>Estudiante</small>
+                            </span>
+                            <i class="fa-solid fa-chevron-down profile-chevron"></i>
+                        </button>
+
+                        <section
+                            class="popover profile-popover"
+                            id="profilePopover"
+                            aria-label="Menú de usuario"
+                            hidden
+                        >
+                            <div class="profile-summary">
+                                <span class="avatar avatar-large" id="menuAvatar">ST</span>
+                                <div>
+                                    <strong id="menuUserName">Estudiante</strong>
+                                    <span id="menuUserEmail">Cargando correo...</span>
+                                </div>
+                            </div>
+                            <div class="popover-separator"></div>
+                            <button type="button" class="popover-action" data-coming-soon="Perfil">
+                                <i class="fa-regular fa-user"></i>
+                                Mi perfil
+                            </button>
+                            <button type="button" class="popover-action" data-coming-soon="Ajustes">
+                                <i class="fa-solid fa-sliders"></i>
+                                Configuración
+                            </button>
+                            <button type="button" class="popover-action logout-action" id="logoutButton">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                Cerrar sesión
+                            </button>
+                        </section>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-content">
+                <!-- Encabezado de bienvenida -->
+                <section class="welcome-section">
+                    <div>
+                        <span class="eyebrow" id="currentDate">Tu espacio académico</span>
+                        <h1 id="welcomeTitle">¡Hola!</h1>
+                        <p id="welcomeSubtitle">
+                            Estamos preparando tu panel personal.
+                        </p>
+                    </div>
+
+                    <div class="quick-actions">
+                        <button class="secondary-action" type="button" data-coming-soon="Materia nueva">
+                            <i class="fa-solid fa-book-medical"></i>
+                            <span>Nueva materia</span>
+                        </button>
+                        <button class="primary-action" type="button" data-coming-soon="Tarea nueva">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Nueva tarea</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Tarjetas de resumen -->
+                <section class="summary-grid" aria-label="Resumen académico">
+                    <article class="summary-card card-subjects">
+                        <div class="summary-icon">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <div class="summary-copy">
+                            <span>Materias</span>
+                            <strong id="subjectCount">0</strong>
+                        </div>
+                        <div class="summary-footer">
+                            <small>Todas tus materias</small>
+                            <button type="button" data-coming-soon="Materias">
+                                Ver todas <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="summary-card card-tasks">
+                        <div class="summary-icon">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <div class="summary-copy">
+                            <span>Tareas pendientes</span>
+                            <strong id="pendingTaskCount">0</strong>
+                        </div>
+                        <div class="summary-footer">
+                            <small id="pendingTaskHint">Sin tareas pendientes</small>
+                            <button type="button" data-coming-soon="Tareas">
+                                Ver tareas <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="summary-card card-deliveries">
+                        <div class="summary-icon">
+                            <i class="fa-regular fa-calendar-check"></i>
+                        </div>
+                        <div class="summary-copy">
+                            <span>Próximas entregas</span>
+                            <strong id="upcomingCount">0</strong>
+                        </div>
+                        <div class="summary-footer">
+                            <small>En los próximos 7 días</small>
+                            <button type="button" data-coming-soon="Calendario">
+                                Ver calendario <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="summary-card card-progress">
+                        <div class="summary-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="summary-copy">
+                            <span>Progreso semanal</span>
+                            <strong><span id="weeklyProgressValue">0</span>%</strong>
+                        </div>
+                        <div class="summary-footer">
+                            <small id="progressHint">Comienza agregando tareas</small>
+                            <button type="button" data-coming-soon="Progreso">
+                                Ver progreso <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- Zona central -->
+                <section class="dashboard-grid">
+                    <!-- Agenda -->
+                    <article class="panel agenda-panel">
+                        <header class="panel-header">
+                            <div class="panel-title">
+                                <span class="panel-icon"><i class="fa-regular fa-calendar"></i></span>
+                                <div>
+                                    <h2>Tu agenda</h2>
+                                    <p>Lo más importante de los próximos días</p>
+                                </div>
+                            </div>
+                            <button type="button" class="panel-link" data-coming-soon="Calendario">
+                                Ver calendario completo
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </header>
+
+                        <div class="agenda-list" id="agendaList">
+                            <div class="empty-state compact-empty">
+                                <span class="empty-icon"><i class="fa-regular fa-calendar-plus"></i></span>
+                                <div>
+                                    <strong>Tu agenda está libre</strong>
+                                    <p>Las tareas con fecha aparecerán aquí.</p>
+                                </div>
+                                <button type="button" data-coming-soon="Tarea nueva">Agregar tarea</button>
+                            </div>
+                        </div>
+
+                        <footer class="daily-tip">
+                            <i class="fa-regular fa-lightbulb"></i>
+                            <span><strong>Tip del día:</strong> divide tus tareas grandes en pasos pequeños.</span>
+                        </footer>
+                    </article>
+
+                    <!-- Próximas entregas -->
+                    <article class="panel deliveries-panel">
+                        <header class="panel-header">
+                            <div class="panel-title">
+                                <span class="panel-icon"><i class="fa-regular fa-calendar-check"></i></span>
+                                <div>
+                                    <h2>Próximas entregas</h2>
+                                    <p>Fechas que debes tener presentes</p>
+                                </div>
+                            </div>
+                            <button type="button" class="panel-link" data-coming-soon="Tareas">
+                                Ver todas <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </header>
+
+                        <div class="delivery-list" id="deliveryList">
+                            <div class="empty-state">
+                                <span class="empty-icon"><i class="fa-solid fa-check-double"></i></span>
+                                <strong>No tienes entregas próximas</strong>
+                                <p>Cuando agregues tareas, sus fechas aparecerán aquí.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Progreso -->
+                    <article class="panel progress-panel">
+                        <header class="panel-header">
+                            <div class="panel-title">
+                                <span class="panel-icon"><i class="fa-solid fa-chart-pie"></i></span>
+                                <div>
+                                    <h2>Tu progreso</h2>
+                                    <p>Resumen de esta semana</p>
+                                </div>
+                            </div>
+                            <select class="period-select" aria-label="Periodo del progreso">
+                                <option>Esta semana</option>
+                            </select>
+                        </header>
+
+                        <div class="progress-content">
+                            <div
+                                class="progress-ring"
+                                id="progressRing"
+                                style="--progress: 0"
+                                role="img"
+                                aria-label="Progreso semanal de 0 por ciento"
+                            >
+                                <div class="progress-ring-center">
+                                    <strong><span id="ringProgressValue">0</span>%</strong>
+                                    <span>Completado</span>
+                                </div>
+                            </div>
+
+                            <div class="progress-message">
+                                <strong id="progressMessageTitle">Todo gran avance empieza en cero</strong>
+                                <p id="progressMessageText">
+                                    Agrega tu primera tarea para comenzar a medir tu progreso.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="subject-progress-list" id="subjectProgressList">
+                            <div class="subject-progress-placeholder">
+                                <i class="fa-solid fa-chart-simple"></i>
+                                <span>El progreso por materia aparecerá aquí.</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Racha -->
+                    <article class="panel streak-panel">
+                        <div class="streak-copy">
+                            <span class="streak-label"><i class="fa-solid fa-fire"></i> Racha de estudio</span>
+                            <h2>¡Enciende tu ritmo!</h2>
+                            <strong><span id="streakDays">0</span> días</strong>
+                            <p id="streakDescription">Completa una tarea hoy para comenzar tu racha.</p>
+                        </div>
+
+                        <div class="streak-visual" aria-hidden="true">
+                            <div class="streak-ring">
+                                <i class="fa-solid fa-fire"></i>
+                            </div>
+                        </div>
+
+                        <div class="week-streak" id="weekStreak" aria-label="Racha de la semana">
+                            <span><small>L</small><i></i></span>
+                            <span><small>M</small><i></i></span>
+                            <span><small>M</small><i></i></span>
+                            <span><small>J</small><i></i></span>
+                            <span><small>V</small><i></i></span>
+                            <span><small>S</small><i></i></span>
+                            <span><small>D</small><i></i></span>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- Actividad reciente -->
+                <section class="panel activity-panel">
+                    <header class="panel-header">
+                        <div class="panel-title">
+                            <span class="panel-icon"><i class="fa-solid fa-wave-square"></i></span>
+                            <div>
+                                <h2>Actividad reciente</h2>
+                                <p>Tus últimos movimientos en StudyTrack</p>
+                            </div>
+                        </div>
+                        <button type="button" class="panel-link" data-coming-soon="Actividad">
+                            Ver toda la actividad
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </header>
+
+                    <div class="activity-list" id="activityList">
+                        <div class="empty-state horizontal-empty">
+                            <span class="empty-icon"><i class="fa-solid fa-seedling"></i></span>
+                            <div>
+                                <strong>Aquí comenzará tu historial</strong>
+                                <p>Completa tareas y organiza materias para ver tu actividad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Menú deslizable para teléfono/tablet -->
+        <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+        <aside class="mobile-drawer" id="mobileDrawer" aria-label="Menú móvil" aria-hidden="true">
+            <div class="drawer-header">
+                <a class="brand" href="dashboard.html">
+                    <span class="brand-mark">
+                        <img
+                            src="assets/images/logo-studytrack.png"
+                            alt=""
+                            width="48"
+                            height="48"
+                        >
+                    </span>
+                    <span class="brand-name">Study<span>Track</span></span>
+                </a>
+                <button class="small-icon-button" id="closeDrawerButton" type="button" aria-label="Cerrar menú">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <nav class="drawer-nav">
+                <a class="nav-link active" href="dashboard.html" aria-current="page">
+                    <span class="nav-icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+                <a class="nav-link" href="#" data-coming-soon="Materias">
+                    <span class="nav-icon"><i class="fa-solid fa-book-open"></i></span>
+                    <span class="nav-label">Materias</span>
+                </a>
+                <a class="nav-link" href="#" data-coming-soon="Tareas">
+                    <span class="nav-icon"><i class="fa-regular fa-clipboard"></i></span>
+                    <span class="nav-label">Tareas</span>
+                </a>
+                <a class="nav-link" href="#" data-coming-soon="Calendario">
+                    <span class="nav-icon"><i class="fa-regular fa-calendar-days"></i></span>
+                    <span class="nav-label">Calendario</span>
+                </a>
+                <a class="nav-link" href="#" data-coming-soon="Progreso">
+                    <span class="nav-icon"><i class="fa-solid fa-chart-column"></i></span>
+                    <span class="nav-label">Progreso</span>
+                </a>
+                <a class="nav-link" href="#" data-coming-soon="Ajustes">
+                    <span class="nav-icon"><i class="fa-solid fa-gear"></i></span>
+                    <span class="nav-label">Ajustes</span>
+                </a>
+            </nav>
+
+            <button class="drawer-logout" id="drawerLogoutButton" type="button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Cerrar sesión
+            </button>
+        </aside>
+
+        <!-- Navegación inferior para teléfono -->
+        <nav class="mobile-bottom-nav" aria-label="Navegación móvil">
+            <a class="mobile-nav-link active" href="dashboard.html" aria-current="page">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+            <a class="mobile-nav-link" href="#" data-coming-soon="Materias">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Materias</span>
+            </a>
+            <button class="mobile-add-button" type="button" data-coming-soon="Tarea nueva" aria-label="Crear tarea">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+            <a class="mobile-nav-link" href="#" data-coming-soon="Tareas">
+                <i class="fa-regular fa-clipboard"></i>
+                <span>Tareas</span>
+            </a>
+            <a class="mobile-nav-link" href="#" data-coming-soon="Calendario">
+                <i class="fa-regular fa-calendar-days"></i>
+                <span>Agenda</span>
+            </a>
+        </nav>
+
+        <!-- Mensajes breves -->
+        <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+        <!-- Pantalla de carga -->
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-logo">
+                <img
+                    src="assets/images/logo-studytrack.png"
+                    alt="StudyTrack"
+                    width="72"
+                    height="72"
+                >
+            </div>
+            <span class="loading-spinner" aria-hidden="true"></span>
+            <p>Preparando tu espacio académico...</p>
+        </div>
+    </div>
+
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
