@@ -1,1 +1,1493 @@
+/* =========================================================
+   STUDYTRACK
+   Archivo: css/style.css
+   Pantalla: Inicio de sesión
+   ========================================================= */
 
+
+/* =========================================================
+   1. VARIABLES GENERALES
+   Aquí guardamos los colores y medidas principales.
+   ========================================================= */
+
+:root {
+    /* Colores principales de StudyTrack */
+    --primary-blue: #2563eb;
+    --primary-blue-dark: #174ea6;
+    --primary-blue-light: #38bdf8;
+    --secondary-blue: #60a5fa;
+
+    /* Colores de fondo */
+    --background-main: #f7faff;
+    --background-soft: #eef5ff;
+    --background-card: rgba(255, 255, 255, 0.92);
+
+    /* Colores de texto */
+    --text-primary: #123263;
+    --text-secondary: #73819b;
+    --text-light: #98a3b8;
+
+    /* Bordes */
+    --border-color: #dce5f2;
+    --border-focus: #2f80ed;
+
+    /* Sombras */
+    --shadow-soft: 0 15px 45px rgba(37, 99, 235, 0.10);
+    --shadow-card: 0 25px 70px rgba(25, 65, 125, 0.16);
+    --shadow-button: 0 12px 28px rgba(37, 99, 235, 0.32);
+
+    /* Bordes redondeados */
+    --radius-small: 12px;
+    --radius-medium: 18px;
+    --radius-large: 32px;
+
+    /* Transiciones */
+    --transition-fast: 180ms ease;
+    --transition-normal: 300ms ease;
+}
+
+
+/* =========================================================
+   2. REINICIO DE ESTILOS
+   Evita diferencias extrañas entre navegadores.
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    color: var(--text-primary);
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(96, 165, 250, 0.24),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(37, 99, 235, 0.12),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fbff 0%,
+            #eef5ff 45%,
+            #ffffff 100%
+        );
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button,
+a,
+input[type="checkbox"] {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    border: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   3. CONTENEDOR GENERAL
+   Divide la pantalla en lado izquierdo y lado derecho.
+   ========================================================= */
+
+.login-page {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(420px, 1fr) minmax(460px, 0.95fr);
+    width: min(1440px, calc(100% - 32px));
+    min-height: calc(100vh - 32px);
+    margin: 16px auto;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(151, 177, 216, 0.45);
+    border-radius: 28px;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(20px);
+}
+
+
+/* =========================================================
+   4. PANEL IZQUIERDO
+   Logo, eslogan, ilustración y características.
+   ========================================================= */
+
+.brand-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 760px;
+    padding: 58px 56px 38px;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   5. FORMAS DECORATIVAS DEL FONDO
+   ========================================================= */
+
+.shape {
+    position: absolute;
+    z-index: -3;
+    pointer-events: none;
+}
+
+.shape-top {
+    top: -155px;
+    left: -125px;
+    width: 420px;
+    height: 420px;
+    border-radius: 45% 55% 70% 30% / 45% 45% 55% 55%;
+    background:
+        linear-gradient(
+            145deg,
+            #4f88f8 0%,
+            #8ab8ff 45%,
+            #d9e8ff 100%
+        );
+    transform: rotate(-18deg);
+    opacity: 0.95;
+}
+
+.shape-top::after {
+    content: "";
+    position: absolute;
+    inset: 60px -80px -80px 80px;
+    border-radius: inherit;
+    background: rgba(222, 235, 255, 0.75);
+    z-index: -1;
+}
+
+.shape-middle {
+    left: -50px;
+    bottom: 240px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #bfdbfe 0%,
+            #60a5fa 50%,
+            #2563eb 100%
+        );
+    filter: blur(2px);
+    opacity: 0.52;
+}
+
+.shape-bottom {
+    left: -90px;
+    bottom: -180px;
+    width: 650px;
+    height: 350px;
+    border-radius: 50%;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(96, 165, 250, 0.70),
+            rgba(191, 219, 254, 0.55),
+            rgba(255, 255, 255, 0.20)
+        );
+    transform: rotate(-9deg);
+    opacity: 0.8;
+}
+
+
+/* Cuadrícula de puntos decorativa */
+
+.dots-grid {
+    position: absolute;
+    top: 205px;
+    left: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 7px);
+    gap: 14px;
+    opacity: 0.45;
+}
+
+.dots-grid span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #8fb9ff;
+}
+
+
+/* Esferas pequeñas */
+
+.floating-ball {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatingBall 5s ease-in-out infinite;
+}
+
+.floating-ball-1 {
+    top: 95px;
+    right: 120px;
+    width: 32px;
+    height: 32px;
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #bde7ff,
+            #6ea8ff 45%,
+            #9b7aff 100%
+        );
+    box-shadow: 0 8px 20px rgba(85, 120, 240, 0.30);
+}
+
+.floating-ball-2 {
+    top: 475px;
+    left: 72px;
+    width: 28px;
+    height: 28px;
+    animation-delay: 1.2s;
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #d9f2ff,
+            #7cb9ff 45%,
+            #2f80ed 100%
+        );
+    box-shadow: 0 8px 20px rgba(47, 128, 237, 0.25);
+}
+
+
+/* =========================================================
+   6. LOGO Y NOMBRE DE LA MARCA
+   ========================================================= */
+
+.brand-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: appearUp 700ms ease both;
+}
+
+.brand-logo {
+    display: grid;
+    place-items: center;
+    width: 180px;
+    height: 180px;
+    padding: 12px;
+    overflow: hidden;
+    border-radius: 50%;
+    background:
+        linear-gradient(
+            145deg,
+            #0ea5e9,
+            #38bdf8
+        );
+    box-shadow:
+        0 20px 45px rgba(14, 165, 233, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.brand-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.brand-title {
+    margin-top: 14px;
+    font-size: clamp(3rem, 4.6vw, 4.8rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -4px;
+    background:
+        linear-gradient(
+            90deg,
+            #1356ad 0%,
+            #1474d4 46%,
+            #07b9ed 55%,
+            #03a8e3 100%
+        );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.brand-subtitle {
+    margin-top: 18px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+
+/* =========================================================
+   7. ILUSTRACIÓN ACADÉMICA CREADA CON CSS
+   ========================================================= */
+
+.study-illustration {
+    position: relative;
+    z-index: 2;
+    width: min(480px, 100%);
+    height: 355px;
+    margin-top: 30px;
+    animation: appearUp 850ms 120ms ease both;
+}
+
+.illustration-stack {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    width: 390px;
+    height: 310px;
+    transform: translateX(-50%);
+}
+
+
+/* Libros */
+
+.books-stack {
+    position: absolute;
+    left: 62px;
+    bottom: 0;
+    width: 310px;
+    height: 175px;
+}
+
+.book {
+    position: absolute;
+    left: 0;
+    width: 300px;
+    height: 58px;
+    border-radius: 9px 18px 18px 9px;
+    box-shadow:
+        0 13px 22px rgba(35, 75, 145, 0.20),
+        inset -13px 0 0 rgba(255, 255, 255, 0.50);
+}
+
+.book::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 245px;
+    height: 42px;
+    border-radius: 4px 13px 13px 4px;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #ffffff 0,
+            #ffffff 5px,
+            #e7eef9 6px,
+            #ffffff 7px
+        );
+}
+
+.book-top {
+    bottom: 110px;
+    left: -22px;
+    transform: rotate(-3deg);
+    background: linear-gradient(110deg, #5b8df4, #9bbcff);
+}
+
+.book-middle {
+    bottom: 55px;
+    left: 8px;
+    transform: rotate(2deg);
+    background: linear-gradient(110deg, #6b4ae4, #9e83ff);
+}
+
+.book-bottom {
+    bottom: 0;
+    left: -2px;
+    transform: rotate(-1deg);
+    background: linear-gradient(110deg, #1886e8, #4eb6ff);
+}
+
+
+/* Separador del libro */
+
+.book-middle::before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    bottom: -22px;
+    left: 190px;
+    width: 24px;
+    height: 56px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+    background: #2f73df;
+    box-shadow: 0 5px 8px rgba(12, 65, 140, 0.25);
+}
+
+
+/* Calendario */
+
+.calendar-card {
+    position: absolute;
+    right: 2px;
+    top: 15px;
+    width: 160px;
+    height: 180px;
+    padding: 42px 18px 18px;
+    border: 1px solid rgba(135, 165, 215, 0.45);
+    border-radius: 14px;
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #e9f1ff
+        );
+    box-shadow: 0 20px 35px rgba(37, 99, 235, 0.18);
+    transform: rotate(4deg);
+}
+
+.calendar-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    border-radius: 14px 14px 0 0;
+    background: linear-gradient(90deg, #4778dd, #6da4ff);
+}
+
+.calendar-rings {
+    position: absolute;
+    top: -15px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.calendar-rings span {
+    width: 10px;
+    height: 35px;
+    border: 3px solid #90a6c9;
+    border-radius: 8px;
+    background: #f7fbff;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.calendar-grid span {
+    width: 23px;
+    height: 23px;
+    border-radius: 4px;
+    background: #dce8fa;
+}
+
+.calendar-grid .highlight-date {
+    position: relative;
+    background: #3b82f6;
+}
+
+.calendar-grid .highlight-date::after {
+    content: "✓";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* Birrete */
+
+.graduation-cap {
+    position: absolute;
+    z-index: 5;
+    top: 90px;
+    left: 2px;
+    width: 180px;
+    height: 115px;
+    transform: rotate(-4deg);
+}
+
+.cap-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 170px;
+    height: 82px;
+    clip-path: polygon(50% 0, 100% 35%, 50% 70%, 0 35%);
+    background: linear-gradient(145deg, #07162f, #243e69);
+    filter: drop-shadow(0 14px 10px rgba(10, 30, 65, 0.24));
+}
+
+.cap-base {
+    position: absolute;
+    left: 48px;
+    bottom: 12px;
+    width: 90px;
+    height: 32px;
+    border-radius: 0 0 30px 30px;
+    background: linear-gradient(90deg, #0a1a35, #223f69);
+}
+
+.cap-tassel {
+    position: absolute;
+    top: 32px;
+    left: 85px;
+    width: 5px;
+    height: 82px;
+    border-radius: 5px;
+    background: #2f8df5;
+    transform: rotate(18deg);
+    transform-origin: top;
+}
+
+.cap-tassel::after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    bottom: -8px;
+    width: 15px;
+    height: 25px;
+    border-radius: 40% 40% 55% 55%;
+    background: #1b73d4;
+}
+
+
+/* Vaso con lápices */
+
+.cup {
+    position: absolute;
+    z-index: 6;
+    left: 35px;
+    bottom: 12px;
+    width: 70px;
+    height: 105px;
+    border-radius: 10px 10px 25px 25px;
+    background: linear-gradient(145deg, #f8fbff, #bfd4f3);
+    box-shadow: 0 18px 25px rgba(25, 65, 125, 0.18);
+}
+
+.pencil {
+    position: absolute;
+    bottom: 85px;
+    width: 9px;
+    height: 78px;
+    border-radius: 4px 4px 0 0;
+    transform-origin: bottom;
+}
+
+.pencil::before {
+    content: "";
+    position: absolute;
+    top: -17px;
+    left: 0;
+    width: 9px;
+    height: 18px;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    background: #e8c995;
+}
+
+.pencil-blue {
+    left: 15px;
+    background: #1766cc;
+    transform: rotate(-10deg);
+}
+
+.pencil-yellow {
+    left: 32px;
+    background: #e5b73c;
+    transform: rotate(2deg);
+}
+
+.pencil-dark {
+    left: 49px;
+    background: #31548d;
+    transform: rotate(10deg);
+}
+
+
+/* =========================================================
+   8. FRASE DESTACADA
+   ========================================================= */
+
+.brand-badge {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 14px;
+    margin-top: 8px;
+    margin-left: 30px;
+    padding: 13px 23px;
+    color: #254a7d;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(164, 190, 230, 0.36);
+    border-radius: 999px;
+    box-shadow: 0 10px 25px rgba(32, 93, 180, 0.10);
+    backdrop-filter: blur(12px);
+}
+
+.brand-badge i {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    color: white;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #2f80ed, #1c67d7);
+}
+
+
+/* =========================================================
+   9. BENEFICIOS INFERIORES
+   ========================================================= */
+
+.brand-features {
+    position: relative;
+    z-index: 4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    margin-top: auto;
+    padding-top: 28px;
+}
+
+.feature-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    min-width: 0;
+    padding: 6px 15px;
+}
+
+.feature-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 13%;
+    right: 0;
+    width: 1px;
+    height: 74%;
+    background: #d7e2f2;
+}
+
+.feature-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    border-radius: 50%;
+    background: #eaf2ff;
+}
+
+.feature-text h3 {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #204475;
+}
+
+.feature-text p {
+    margin-top: 2px;
+    font-size: 0.75rem;
+    color: #607493;
+}
+
+
+/* =========================================================
+   10. PANEL DERECHO
+   ========================================================= */
+
+.login-panel {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 55px 58px;
+}
+
+.login-panel::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(96, 165, 250, 0.12);
+    filter: blur(65px);
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   11. TARJETA DEL FORMULARIO
+   ========================================================= */
+
+.login-card {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 600px);
+    padding: 56px 54px 52px;
+    border: 1px solid rgba(190, 207, 231, 0.52);
+    border-radius: var(--radius-large);
+    background: var(--background-card);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(28px);
+    animation: appearRight 750ms ease both;
+}
+
+.login-header {
+    text-align: center;
+}
+
+.login-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+}
+
+.login-header p {
+    margin-top: 12px;
+    font-size: 1.02rem;
+    color: var(--text-secondary);
+}
+
+.title-line {
+    width: 48px;
+    height: 5px;
+    margin: 25px auto 42px;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        var(--primary-blue),
+        var(--primary-blue-light)
+    );
+}
+
+
+/* =========================================================
+   12. FORMULARIO
+   ========================================================= */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 27px;
+}
+
+.form-group label {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.97rem;
+    font-weight: 600;
+    color: #183a6b;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    width: 100%;
+    height: 66px;
+    padding: 0 58px;
+    color: var(--text-primary);
+    font-size: 0.98rem;
+    font-weight: 400;
+    outline: none;
+    border: 1.5px solid var(--border-color);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.80);
+    box-shadow: 0 7px 20px rgba(48, 79, 125, 0.06);
+    transition:
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal),
+        transform var(--transition-fast),
+        background var(--transition-normal);
+}
+
+.input-wrapper input::placeholder {
+    color: #9aa7bb;
+}
+
+.input-wrapper input:hover {
+    border-color: #b9cce7;
+    background: #ffffff;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--border-focus);
+    background: #ffffff;
+    box-shadow:
+        0 0 0 4px rgba(47, 128, 237, 0.11),
+        0 10px 25px rgba(37, 99, 235, 0.10);
+    transform: translateY(-1px);
+}
+
+.input-icon {
+    position: absolute;
+    z-index: 2;
+    left: 21px;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    color: #395476;
+    font-size: 1.17rem;
+    pointer-events: none;
+    transition: color var(--transition-normal);
+}
+
+.input-wrapper:focus-within .input-icon {
+    color: var(--primary-blue);
+}
+
+
+/* Botón para mostrar la contraseña */
+
+.toggle-password {
+    position: absolute;
+    z-index: 3;
+    right: 18px;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    color: #3f5878;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    background: transparent;
+    transition:
+        color var(--transition-fast),
+        background var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.toggle-password:hover {
+    color: var(--primary-blue);
+    background: #edf4ff;
+}
+
+.toggle-password:active {
+    transform: scale(0.9);
+}
+
+
+/* =========================================================
+   13. RECORDARME Y RECUPERAR CONTRASEÑA
+   ========================================================= */
+
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    margin-top: -4px;
+    margin-bottom: 38px;
+}
+
+.remember-me {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #607493;
+    font-size: 0.93rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.remember-me input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.custom-check {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid #aebdd2;
+    border-radius: 5px;
+    background: white;
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.custom-check::after {
+    content: "✓";
+    color: white;
+    font-size: 14px;
+    font-weight: 800;
+    opacity: 0;
+    transform: scale(0.4);
+    transition:
+        opacity var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.remember-me input:checked + .custom-check {
+    border-color: var(--primary-blue);
+    background: var(--primary-blue);
+}
+
+.remember-me input:checked + .custom-check::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.remember-me:hover .custom-check {
+    border-color: var(--primary-blue);
+    transform: scale(1.04);
+}
+
+.forgot-link {
+    color: var(--primary-blue);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition:
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.forgot-link:hover {
+    color: var(--primary-blue-dark);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+
+/* =========================================================
+   14. BOTÓN PRINCIPAL
+   ========================================================= */
+
+.login-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 68px;
+    overflow: hidden;
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 15px;
+    background:
+        linear-gradient(
+            90deg,
+            #3d82f3 0%,
+            #246cf0 45%,
+            #1c63e8 100%
+        );
+    box-shadow: var(--shadow-button);
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-normal),
+        filter var(--transition-normal);
+}
+
+.login-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 90%;
+    height: 100%;
+    background:
+        linear-gradient(
+            100deg,
+            transparent,
+            rgba(255, 255, 255, 0.35),
+            transparent
+        );
+    transform: skewX(-20deg);
+    transition: left 650ms ease;
+}
+
+.login-button span {
+    position: relative;
+    z-index: 2;
+}
+
+.login-button i {
+    position: absolute;
+    z-index: 2;
+    right: 26px;
+    font-size: 1.35rem;
+    transition: transform var(--transition-normal);
+}
+
+.login-button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.04);
+    box-shadow: 0 18px 35px rgba(37, 99, 235, 0.38);
+}
+
+.login-button:hover::before {
+    left: 145%;
+}
+
+.login-button:hover i {
+    transform: translateX(6px);
+}
+
+.login-button:active {
+    transform: translateY(0) scale(0.985);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =========================================================
+   15. SEPARADOR SOCIAL
+   ========================================================= */
+
+.social-divider {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 18px;
+    margin: 40px 0 25px;
+}
+
+.social-divider span {
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #dfe6f1
+    );
+}
+
+.social-divider span:last-child {
+    background: linear-gradient(
+        90deg,
+        #dfe6f1,
+        transparent
+    );
+}
+
+.social-divider p {
+    color: #9aa5b6;
+    font-size: 0.91rem;
+}
+
+
+/* =========================================================
+   16. BOTONES SOCIALES
+   ========================================================= */
+
+.social-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-button {
+    display: grid;
+    place-items: center;
+    width: 80px;
+    height: 68px;
+    color: #152b4c;
+    font-size: 1.75rem;
+    cursor: pointer;
+    border: 1px solid #e4eaf3;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.90);
+    box-shadow: 0 8px 20px rgba(42, 74, 120, 0.08);
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-normal),
+        border-color var(--transition-fast);
+}
+
+.social-button:hover {
+    transform: translateY(-4px);
+    border-color: #bfd3f1;
+    box-shadow: 0 14px 26px rgba(37, 99, 235, 0.14);
+}
+
+.social-button:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.social-button:nth-child(1) i {
+    color: #4285f4;
+}
+
+.social-button:nth-child(2) i {
+    color: #f25022;
+}
+
+.social-button:nth-child(3) i {
+    color: #050505;
+}
+
+
+/* =========================================================
+   17. ENLACE PARA CREAR CUENTA
+   ========================================================= */
+
+.signup-text {
+    margin-top: 40px;
+    text-align: center;
+    color: #173765;
+    font-size: 0.94rem;
+}
+
+.signup-text a {
+    margin-left: 7px;
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.signup-text a:hover {
+    color: var(--primary-blue-dark);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+
+/* =========================================================
+   18. ANIMACIONES
+   ========================================================= */
+
+@keyframes appearUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes appearRight {
+    from {
+        opacity: 0;
+        transform: translateX(32px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes floatingBall {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+
+/* =========================================================
+   19. TABLETAS Y PANTALLAS MEDIANAS
+   ========================================================= */
+
+@media (max-width: 1180px) {
+    .login-page {
+        grid-template-columns: 1fr 0.95fr;
+        width: calc(100% - 24px);
+        min-height: calc(100vh - 24px);
+        margin: 12px auto;
+    }
+
+    .brand-panel {
+        padding: 45px 32px 30px;
+    }
+
+    .brand-logo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .brand-title {
+        font-size: 3.4rem;
+    }
+
+    .study-illustration {
+        transform: scale(0.9);
+        margin-top: 5px;
+    }
+
+    .brand-features {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 16px;
+    }
+
+    .feature-item:nth-child(2)::after {
+        display: none;
+    }
+
+    .login-panel {
+        padding: 40px 30px;
+    }
+
+    .login-card {
+        padding: 48px 38px;
+    }
+}
+
+
+/* =========================================================
+   20. CELULARES Y TABLETAS VERTICALES
+   ========================================================= */
+
+@media (max-width: 850px) {
+    body {
+        background: #f4f8ff;
+    }
+
+    .login-page {
+        display: block;
+        width: 100%;
+        min-height: 100vh;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .brand-panel {
+        min-height: auto;
+        padding: 42px 20px 85px;
+    }
+
+    .shape-top {
+        top: -220px;
+        left: -190px;
+    }
+
+    .dots-grid,
+    .floating-ball-2,
+    .study-illustration,
+    .brand-badge,
+    .brand-features {
+        display: none;
+    }
+
+    .brand-logo {
+        width: 118px;
+        height: 118px;
+    }
+
+    .brand-title {
+        margin-top: 12px;
+        font-size: 3rem;
+        letter-spacing: -3px;
+    }
+
+    .brand-subtitle {
+        margin-top: 13px;
+        font-size: 0.95rem;
+    }
+
+    .login-panel {
+        margin-top: -52px;
+        padding: 0 18px 34px;
+    }
+
+    .login-card {
+        width: min(100%, 560px);
+        padding: 42px 32px;
+        border-radius: 28px;
+    }
+
+    .login-header h2 {
+        font-size: 1.85rem;
+    }
+
+    .title-line {
+        margin-bottom: 35px;
+    }
+}
+
+
+/* =========================================================
+   21. CELULARES PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 560px) {
+    .brand-panel {
+        padding-top: 30px;
+        padding-bottom: 74px;
+    }
+
+    .brand-logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .brand-title {
+        font-size: 2.45rem;
+        letter-spacing: -2px;
+    }
+
+    .brand-subtitle {
+        max-width: 290px;
+        font-size: 0.84rem;
+    }
+
+    .login-panel {
+        padding-inline: 12px;
+    }
+
+    .login-card {
+        padding: 35px 20px 32px;
+        border-radius: 24px;
+    }
+
+    .login-header h2 {
+        font-size: 1.55rem;
+    }
+
+    .login-header p {
+        font-size: 0.89rem;
+    }
+
+    .title-line {
+        margin: 20px auto 30px;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    .form-group label {
+        font-size: 0.87rem;
+    }
+
+    .input-wrapper input {
+        height: 59px;
+        padding-left: 50px;
+        padding-right: 50px;
+        font-size: 0.85rem;
+    }
+
+    .input-icon {
+        left: 17px;
+    }
+
+    .toggle-password {
+        right: 12px;
+    }
+
+    .form-options {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 28px;
+    }
+
+    .remember-me,
+    .forgot-link {
+        font-size: 0.84rem;
+    }
+
+    .login-button {
+        height: 61px;
+        font-size: 0.95rem;
+    }
+
+    .login-button i {
+        right: 20px;
+    }
+
+    .social-divider {
+        margin: 32px 0 22px;
+    }
+
+    .social-divider p {
+        font-size: 0.80rem;
+    }
+
+    .social-login {
+        gap: 12px;
+    }
+
+    .social-button {
+        width: 68px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .signup-text {
+        margin-top: 32px;
+        font-size: 0.84rem;
+    }
+}
+
+
+/* =========================================================
+   22. ACCESIBILIDAD
+   Reduce las animaciones si el usuario lo solicita.
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
